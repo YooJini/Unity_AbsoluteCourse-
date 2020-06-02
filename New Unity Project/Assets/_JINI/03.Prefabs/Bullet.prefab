@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4740562324837200530}
   - component: {fileID: 4584565622182117849}
   - component: {fileID: 6908406627878850634}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bullet
   m_TagString: BULLET
   m_Icon: {fileID: 0}
@@ -212,6 +212,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: f3be3666e308d450f8cc9ad434580302, type: 3}
       propertyPath: m_Name
       value: lowpolybullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f3be3666e308d450f8cc9ad434580302, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f3be3666e308d450f8cc9ad434580302, type: 3}
       propertyPath: m_LocalPosition.x
