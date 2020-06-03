@@ -92,6 +92,8 @@ public class Damage : MonoBehaviour
         //따라서 델리게이트 이용
         OnPlayerDie();
 
+        GameManager.instance.isGameOver = true;
+
        //Debug.Log("Player Die!");
        //
        ////ENEMY 태그로 지정된 모든 적캐릭터 추출, 배열에 저장
