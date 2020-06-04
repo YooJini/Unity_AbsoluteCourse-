@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
     public int maxPool = 10;
     public List<GameObject> bulletPool = new List<GameObject>();
 
+    //일시정지 여부를 판단하는 변수
+    private bool isPaused;
+    //Inventory의 Canvas Group 컴포넌트를 저장할 변수
+    public CanvasGroup inventoryCG;
+
     private void Awake()
     {
         if (instance == null) 
@@ -44,6 +49,9 @@ public class GameManager : MonoBehaviour
    
     private void Start()
     {
+        //처음 인벤토리를 비활성화
+        OnInventoryOpen(false);
+
         //하이러키 뷰의 SpawnPointGroup을 찾아 하위에 있는 모든 트랜스폼 컴포넌트를 찾아옴
         points = GameObject.Find("SpawnPointGroup").GetComponentsInChildren<Transform>();
 
@@ -51,6 +59,14 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(this.CreateEnemy());
         }
+    }
+
+    //인벤토리를 활성화/비활성화 하는 함수
+    public void OnInventoryOpen(bool isOpened)
+    {
+        inventoryCG.alpha = (isOpened) ? 1.0f : 0.0f;
+        inventoryCG.interactable = isOpened;
+        inventoryCG.blocksRaycasts = isOpened;
     }
 
     //적 캐릭터를 생성하는 코루틴 함수
@@ -109,4 +125,33 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
+    public void OnPauseClick()
+    {
+        //일시정지 값을 토글시킴
+        isPaused = !isPaused;
+        //Time Scale이 0이면 정지, 1이면 정상 속도
+        Time.timeScale = (isPaused) ? 0.0f : 1.0f;
+
+        //Time.timeScale을 0으로 설정했다고 하더라도 주인공 캐릭터에 추가된 스크립트 중 마우스 클릭과 같은 이벤트는 동작한다.
+        //즉, 일시정지한 상태에서 마우스 클릭을 하면 총알이 생성되고 사운드가 발생한다.
+        //따라서 주인공 캐릭터에 있는 모든 스크립트를 추출한 후 일시정지 여부에 따라서 모두 활성화/비활성화 한다.
+
+        //주인공 객체를 추출
+        var playerObj = GameObject.FindGameObjectWithTag("PLAYER");
+        //주인공 캐릭터에 추가된 모든 스크립트를 추출함
+        var scripts = playerObj.GetComponents<MonoBehaviour>();
+        //주인공 캐릭터의 모든 스크립트를 활성화/비활성화
+        foreach(var script in scripts)
+        {
+            script.enabled = !isPaused;
+        }
+
+        //Time.timeScale을 0으로 설정했을 때 마우스 클릭과 터치 이벤트는 여전히 정상적인 동작을 한다.
+        //따라서 일시 정지가 됐을 때 일부 UI(무기교체버튼)가 클릭되지 않도록 구현
+        //보통 일시정지됐을 때 비활성화해야 하는 각종 버튼은 하나의 빈 게임오브젝트 하위에 넣어두고 
+        //부모 게임오브젝트 하나의 Canvas Group만 추가해 구현한다.
+        //이 경우에 부모 게임오브젝트에 있는 Canvas Group의 속성을 수정하면 하위에 있는 모든 UI항목에 그 설정값이 적용된다.
+        var canvasGroup = GameObject.Find("Panel - Weapon").GetComponent<CanvasGroup>();
+        canvasGroup.blocksRaycasts = !isPaused;
+    }
 }

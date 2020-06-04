@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 //총알 발사와 재장전 오디오 클립을 저장할 구조체
@@ -57,6 +58,11 @@ public class FireCtrl : MonoBehaviour
     //재장전 여부를 판단할 변수
     private bool isReloading = false;
 
+    //변경할 무기 이미지
+    public Sprite[] weaponIcons;
+    //교체할 무기 이미지 UI
+    public Image weaponImage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +88,9 @@ public class FireCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //UI항목 위에서 클릭 또는 터치하게 되면 True, 그렇지 않으면 false 반환
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+
         //마우스 왼쪽 버튼을 클릭했을 때 Fire함수 호출
         if(!isReloading && Input.GetMouseButtonDown(0))
         {
@@ -146,5 +155,11 @@ public class FireCtrl : MonoBehaviour
         var _sfx = playerSfx.fire[(int)currWeapon];
         //사운드 발생
         _audio.PlayOneShot(_sfx, 1.0f);
+    }
+
+    public void OnChangeWeapon()
+    {
+        currWeapon = (WeaponType)((int)++currWeapon % 2);
+        weaponImage.sprite = weaponIcons[(int)currWeapon];
     }
 }

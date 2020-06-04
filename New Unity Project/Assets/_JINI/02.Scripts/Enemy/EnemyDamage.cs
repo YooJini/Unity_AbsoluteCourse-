@@ -1,22 +1,53 @@
 ﻿//using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 //using System.Numerics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyDamage : MonoBehaviour
 {
     private const string bulletTag = "BULLET";
     //생명 게이지
     private float hp = 100.0f;
+    //초기 생명 수치
+    private float initHp = 100.0f;
+
     //피격시 사용할 혈흔 효과
     private GameObject bloodEffect;
+
+    //생명 게이지 프리팹을 저장할 변수
+    public GameObject hpBarPrefab;
+    //생명 게이지의 위치를 보정할 오프셋
+    public Vector3 hpBarOffset = new Vector3(0, 2.2f, 0);
+    //부모가 될 canvas 객체
+    private Canvas uiCanvas;
+    //생명 수치에 따라 fillamount 속성을 변경할 image
+    private Image hpBarImage;
 
     // Start is called before the first frame update
     void Start()
     {
         //혈흔 효과 프리팹을 로드
         bloodEffect = Resources.Load<GameObject>("BulletImpactFleshBigEffect");
+
+        //생명 게이지의 생성 및 초기화
+        SetHpBar();
+    }
+
+    private void SetHpBar()
+    {
+        uiCanvas = GameObject.Find("UI Canvas").GetComponent<Canvas>();
+        //UI 캔버스 하위로 생명 게이지 생성
+        GameObject hpBar = Instantiate<GameObject>(hpBarPrefab, uiCanvas.transform);
+        //fillAmount 속성을 변경할 이미지 추출
+        hpBarImage = hpBar.GetComponentsInChildren<Image>()[1];
+
+        //생명 게이지가 따라가야할 대상과 오프셋 값 설정
+        var _hpBar = hpBar.GetComponent<EnemyHpBar>();
+        _hpBar.targetTr = this.gameObject.transform;
+        _hpBar.offset = hpBarOffset;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -33,10 +64,15 @@ public class EnemyDamage : MonoBehaviour
 
             //생명 게이지 차감
             hp -= collision.gameObject.GetComponent<BulletCtrl>().damage;
+            //생명 게이지의 fillAmount 속성 변경
+            hpBarImage.fillAmount = hp / initHp;
+            
             if(hp<=0.0f)
             {
                 //적 캐릭터의 상태를 DIE로 변경
                 GetComponent<EnemyAI>().state = EnemyAI.State.DIE;
+                //적 캐릭터가 사망한 이후 생명 게이지를 투명 처리
+                hpBarImage.GetComponentsInParent<Image>()[1].color = Color.clear;
             }
         }
     }
