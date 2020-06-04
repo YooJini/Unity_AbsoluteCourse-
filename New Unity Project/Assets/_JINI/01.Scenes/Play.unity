@@ -352,6 +352,7 @@ GameObject:
   - component: {fileID: 39034489}
   - component: {fileID: 39034488}
   - component: {fileID: 39034492}
+  - component: {fileID: 39034493}
   m_Layer: 5
   m_Name: ItemHp
   m_TagString: Untagged
@@ -483,6 +484,24 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &39034493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39034486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4389f2432de874f8f282272a5d546b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData:
+    itemType: 0
+    itemCalc: 0
+    name: HP Up
+    desc: Increase +10 HP
+    value: 10
 --- !u!1001 &74736732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1262,6 +1281,7 @@ RectTransform:
   - {fileID: 1036172288}
   - {fileID: 1597279280}
   - {fileID: 1238481173}
+  - {fileID: 1671396920}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4374,6 +4394,7 @@ GameObject:
   - component: {fileID: 1181806068}
   - component: {fileID: 1181806067}
   - component: {fileID: 1181806071}
+  - component: {fileID: 1181806072}
   m_Layer: 5
   m_Name: ItemShock
   m_TagString: Untagged
@@ -4505,6 +4526,24 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1181806072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181806065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4389f2432de874f8f282272a5d546b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData:
+    itemType: 3
+    itemCalc: 1
+    name: Damage Up
+    desc: Increase 5% Damage
+    value: 0.05
 --- !u!1 &1188974501
 GameObject:
   m_ObjectHideFlags: 0
@@ -4519,6 +4558,7 @@ GameObject:
   - component: {fileID: 1188974504}
   - component: {fileID: 1188974503}
   - component: {fileID: 1188974507}
+  - component: {fileID: 1188974508}
   m_Layer: 5
   m_Name: ItemSpeed
   m_TagString: Untagged
@@ -4650,6 +4690,24 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1188974508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188974501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4389f2432de874f8f282272a5d546b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData:
+    itemType: 1
+    itemCalc: 1
+    name: Speed Up
+    desc: Increase Speed 10%
+    value: 0.1
 --- !u!1001 &1204669237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4824,7 +4882,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 594.5, y: 127}
+  m_AnchoredPosition: {x: 420.5, y: 133.70001}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1238481174
@@ -6073,6 +6131,7 @@ GameObject:
   - component: {fileID: 1563725729}
   - component: {fileID: 1563725728}
   - component: {fileID: 1563725732}
+  - component: {fileID: 1563725733}
   m_Layer: 5
   m_Name: ItemGrenade
   m_TagString: Untagged
@@ -6204,6 +6263,24 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1563725733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563725726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4389f2432de874f8f282272a5d546b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData:
+    itemType: 2
+    itemCalc: 0
+    name: Grenade Up
+    desc: Increase +2 Grenade
+    value: 2
 --- !u!4 &1567696847 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 603909674279942846, guid: 89e39df4247745b42a904891ae7becf2,
@@ -6632,6 +6709,84 @@ MonoBehaviour:
   type: 0
   _color: {r: 0.9811321, g: 0.22569723, b: 0.06016379, a: 0.6313726}
   _radius: 0.6
+--- !u!1 &1671396917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1671396920}
+  - component: {fileID: 1671396919}
+  - component: {fileID: 1671396918}
+  m_Layer: 5
+  m_Name: KillCount
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1671396918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671396917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: fae067962e5934395be31c8aba4a3455, type: 3}
+    m_FontSize: 22
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: KILL 0000
+--- !u!222 &1671396919
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671396917}
+  m_CullTransparentMesh: 0
+--- !u!224 &1671396920
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671396917}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 380142775}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 192.5}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1671538349
 GameObject:
   m_ObjectHideFlags: 0
@@ -7946,6 +8101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2116225831}
   - component: {fileID: 2116225830}
+  - component: {fileID: 2116225832}
   m_Layer: 0
   m_Name: GameMgr
   m_TagString: Untagged
@@ -7975,6 +8131,13 @@ MonoBehaviour:
   maxPool: 10
   bulletPool: []
   inventoryCG: {fileID: 1597279283}
+  killCountTxt: {fileID: 1671396918}
+  gameData: {fileID: 11400000, guid: 5c18c88f65c54504eb66156a134da7a4, type: 2}
+  itemObjects:
+  - {fileID: 39034486}
+  - {fileID: 1188974501}
+  - {fileID: 1563725726}
+  - {fileID: 1181806065}
 --- !u!4 &2116225831
 Transform:
   m_ObjectHideFlags: 0
@@ -7989,6 +8152,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2116225832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116225829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91c4d3ca1be43ed449c3431fae6c58bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2134213113
 GameObject:
   m_ObjectHideFlags: 0

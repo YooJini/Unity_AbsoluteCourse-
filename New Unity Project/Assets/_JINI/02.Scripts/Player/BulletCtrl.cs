@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,11 +21,22 @@ public class BulletCtrl : MonoBehaviour
         tr = GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
         trail = GetComponent<TrailRenderer>();
+
+        //불러온 데이터값을 damage에 적용
+        damage = GameManager.instance.gameData.damage;
     }
+    
 
     private void OnEnable()
     {
         rb.AddForce(transform.forward * speed);
+        GameManager.OnItemChange += UpdateSetup;
+
+    }
+
+    private void UpdateSetup()
+    {
+        damage = GameManager.instance.gameData.damage;
     }
 
     private void OnDisable()

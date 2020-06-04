@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -36,6 +37,16 @@ public class PlayerCtrl : MonoBehaviour
     [HideInInspector]  //더이상 인스펙터 뷰에 노출할 필요가 없음
     public Animation anim;
 
+    private void OnEnable()
+    {
+        GameManager.OnItemChange += UpdateSetup;
+    }
+
+    private void UpdateSetup()
+    {
+        moveSpeed = GameManager.instance.gameData.speed;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +58,9 @@ public class PlayerCtrl : MonoBehaviour
         //이외에 다른방법
         //1)anim.Play(playerAnim.idle.name);
         //2)anim.Play("Idle"); -> 명칭이 변경될 경우 소스코드를 수정해야하는 위험성 존재
+
+        //불러온 데이터값을 moveSpeed에 적용
+        moveSpeed = GameManager.instance.gameData.speed;
 
     }
 

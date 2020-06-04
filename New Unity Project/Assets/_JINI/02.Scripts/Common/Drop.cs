@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DataInfo;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,6 +11,10 @@ public class Drop : MonoBehaviour,IDropHandler
         if(transform.childCount==0)
         {
             Drag.draggingItem.transform.SetParent(this.transform);
+
+            //슬롯에 추가된 아이템을 GameData에 추가하기 위해 AddItem호출
+            Item item = Drag.draggingItem.GetComponent<ItemInfo>().itemData;
+            GameManager.instance.AddItem(item);
         }
     }
     
