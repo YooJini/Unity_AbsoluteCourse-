@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,16 +35,27 @@ public class BarrelCtrl : MonoBehaviour
     void Start()
     {
         //Rigidbody 컴포넌트를 추출해 저장
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
         //MeshFilter 컴포넌트를 추출해 저장
         meshFilter = GetComponent<MeshFilter>();
         //MeshRenderer 컴포넌트를 추출해 저장
         _renderer = GetComponent<MeshRenderer>();
         //난수를 발생시켜 불규칙적인 텍스처 적용
-        _renderer.material.mainTexture = textures[Random.Range(0, textures.Length)];
+        _renderer.material.mainTexture = textures[UnityEngine.Random.Range(0, textures.Length)];
         //오디오소스 컴포넌트를 추출해 저장
         _audio = GetComponent<AudioSource>();
         //쉐이크 스크립트 추출
+        //shake = GameObject.Find("CameraRig").GetComponent<Shake>();
+
+        StartCoroutine(GetShake());
+    }
+
+    IEnumerator GetShake()
+    {
+        while(!UnityEngine.SceneManagement.SceneManager.GetSceneByName("Play").isLoaded)
+        {
+            yield return null;
+        }
         shake = GameObject.Find("CameraRig").GetComponent<Shake>();
     }
 
@@ -77,7 +89,7 @@ public class BarrelCtrl : MonoBehaviour
         IndirectDamage(transform.position);
 
         //난수 발생
-        int idx = Random.Range(0, meshes.Length);
+        int idx = UnityEngine.Random.Range(0, meshes.Length);
         //찌그러진 메쉬를 적용
         meshFilter.sharedMesh = meshes[idx];
 

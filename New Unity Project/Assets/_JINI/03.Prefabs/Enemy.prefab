@@ -18,7 +18,8 @@ GameObject:
   - component: {fileID: 9063409992924486960}
   - component: {fileID: 9063409992924486961}
   - component: {fileID: 9063409992924486972}
-  m_Layer: 0
+  - component: {fileID: -1689613647961468023}
+  m_Layer: 14
   m_Name: Enemy
   m_TagString: ENEMY
   m_Icon: {fileID: 0}
@@ -284,6 +285,20 @@ MonoBehaviour:
   hpBarPrefab: {fileID: 96024477420945871, guid: 457ff34e8a658914a864fc9115318e57,
     type: 3}
   hpBarOffset: {x: 0, y: 2.2, z: 0}
+--- !u!114 &-1689613647961468023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9063409991575787930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d568417cea33b4ba40858700a9821e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRange: 15
+  viewAngle: 120
 --- !u!1 &9063409991575788004
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,6 +696,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 03cd26eddfc134a6dbc4d40f15965660, type: 3}
       propertyPath: m_Name
       value: w_rifle02
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03cd26eddfc134a6dbc4d40f15965660, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03cd26eddfc134a6dbc4d40f15965660, type: 3}
       propertyPath: m_LocalPosition.x

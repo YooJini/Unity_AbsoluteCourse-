@@ -4,4 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_JINI/01.Scenes/Main.unity
+    guid: b7e717ca6c9514c4da3587eea5f711bc
+  - enabled: 1
+    path: Assets/_JINI/01.Scenes/Play.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/_JINI/01.Scenes/Level1.unity
+    guid: 8f6a5f3791de6d24a8ff30574210b60e
+  - enabled: 1
+    path: Assets/_JINI/01.Scenes/SceneLoader.unity
+    guid: f3b6cb5643fc9b4459b0e614a715c05d
+  m_configObjects: {}
